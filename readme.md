@@ -1,4 +1,4 @@
-# biblio-tool
+# biblio-tool
 
 A tool to make a quick cleaning of research publications and prepare them for notes.
 

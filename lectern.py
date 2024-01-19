@@ -27,7 +27,7 @@ def process_pdf_articles():
         return
     for article in articles_to_process:
         # Extract name
-        article_name = article.split(".")[0]
+        article_name = article.split(".pdf")[0]
         # Create directory
         path = "articles/"+article_name
         if os.path.exists(path):

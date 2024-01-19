@@ -1,6 +1,7 @@
 import sys
 import os
 import PySimpleGUI as sg
+import pdfrenamer
 
 # $ python lectern.py --process
 # or -p. Creates a repository and empty notes.md file for each pdf in
@@ -19,13 +20,17 @@ def process_pdf_articles():
     Create a folder, moves the pdf and add a notes.md file
     '''
     # List articles
-    os.system('pdfrenamer articles/to_process/*.pdf -f \"{YYYY}_{Aetal}_{T}\"')
     articles_to_process = os.listdir("articles/to_process/")
     articles_to_process.remove("README.md")
     if len(articles_to_process)==0:
         print("No article to process.")
         return
     for article in articles_to_process:
+        article_metadata=pdfrenamer.rename("articles/to_process/"+article,format="{YYYY}_{Aetal}_{T}")
+    articles_to_process = os.listdir("articles/to_process/")
+    articles_to_process.remove("README.md")
+    for article in articles_to_process:
+        
         # Extract name
         article_name = article.split(".pdf")[0]
         # Create directory
@@ -36,7 +41,7 @@ def process_pdf_articles():
         os.mkdir(path)
         # Add bib file
         with open(path + "/biblio.bib", "w") as f:
-            f.write("")
+            f.write(article_metadata['bibtex'])
         # Add notes file
         with open(path + "/notes.md", "w") as f:
             f.write("<!-- Please prefix the notes with the date as in [22/12/2020] -->\n\n##### tags: unread")

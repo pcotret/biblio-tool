@@ -19,8 +19,8 @@ def process_pdf_articles():
     Create a folder, moves the pdf and add a notes.md file
     '''
     # List articles
-    articles_to_process = os.listdir("articles/to_process/")
     os.system('pdfrenamer articles/to_process/*.pdf -f \"{YYYY}_{Aetal}_{T}\"')
+    articles_to_process = os.listdir("articles/to_process/")
     articles_to_process.remove("README.md")
     if len(articles_to_process)==0:
         print("No article to process.")

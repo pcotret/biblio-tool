@@ -12,4 +12,4 @@ A tool to make a quick cleaning of research publications and prepare them for no
 pip install -r requirements.txt
 ```
 
-See https://github.com/qducasse/lectern for default commands. Basic usage is : `python lectern.py --progress`
+See https://github.com/qducasse/lectern for default commands. Basic usage is : `python lectern.py --process`
